@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "label": "node: 运行程序",
+      "type": "shell",
+      "command": "\"\\Soft\\nodejs\\node.exe\"",
+      "args": ["${file}"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "运行JavaScript或TypeScript。"
+    }
+  ],
+  "version": "2.0.0"
+}
