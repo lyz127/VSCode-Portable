@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "C"
+		},
+		{
+			"path": "C++"
+		},
+		{
+			"path": "Python"
+		},
+		{
+			"path": "Web"
+		},
+		{
+			"path": "Latex"
+		}
+	],
+	"settings": {}
+}
