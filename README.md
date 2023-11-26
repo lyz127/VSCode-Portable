@@ -51,7 +51,7 @@ setings.json
   "[latex]": {
     "editor.defaultFormatter": "James-Yu.latex-workshop"
   },
-  "C_Cpp.default.compilerPath": "..\\..\\Soft\\mingw64\\bin\\gcc.exe",
+  "C_Cpp.default.compilerPath": "/Soft/mingw64/bin/gcc.exe",
   "code-runner.executorMap": {
     "javascript": "\"\\Soft\\nodejs\\node.exe\"",
     "python": "set PYTHONIOENCODING=utf8 && \"\\Soft\\Python311\\python.exe\"",
