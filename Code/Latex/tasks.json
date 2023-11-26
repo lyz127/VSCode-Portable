@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "label": "xelatex: 生成pdf",
+      "type": "shell",
+      "command": "\"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\"",
+      "args": ["${file}"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "用XeLaTeX生成pdf文件"
+    }
+  ],
+  "version": "2.0.0"
+}
