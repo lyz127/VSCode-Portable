@@ -1,6 +1,6 @@
 # VS Code Portable
 安装在U盘上的便携式VSCode程序及环境配置
-## 目录
+## 文件目录
 - (root)
    - Soft
       - VSCode-win32-x64-1.84.2
