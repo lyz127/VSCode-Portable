@@ -427,7 +427,7 @@ tasks.json
 {
   "tasks": [
     {
-      "label": "xelatex: 生成pdf",
+      "label": "xelatex: 生成pdf文件",
       "type": "shell",
       "command": "\"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\"",
       "args": ["${file}"],
