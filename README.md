@@ -418,4 +418,3 @@ launch.json
   ]
 }
 ```
-### Latex
