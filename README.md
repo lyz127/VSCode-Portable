@@ -3,11 +3,13 @@
 ## 目录
 - (root)
    - Soft
-      - VSCode
-      - MinGW
-      - Python
-      - NodeJs
-      - TexLive
+      - VSCode-win32-x64-1.84.2
+         - data
+      - mingw64
+      - Python311
+      - nodejs
+      - texlive
+         - 2023
    - Code
       - C
       - C++
