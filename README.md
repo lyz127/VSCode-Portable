@@ -18,6 +18,17 @@
 ### VSCode
 [下载VSCode](https://code.visualstudio.com/#alt-downloads)`.zip`版并[便携式安装](https://code.visualstudio.com/docs/editor/portable)
 
+安装插件：
+ - Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code
+ - Prettier - Code formatter
+ - Code Runner
+ - C/C++ Extension Pack
+ - Python
+ - autopep8
+ - JavaScript (ES6) code snippets
+ - Live Server
+ - LaTeX Workshop
+
 setings.json配置：
 ```json
 {
@@ -134,3 +145,4 @@ setings.json配置：
 }
 ```
 ### MinGW
+[MinGW-w64](https://www.mingw-w64.org/downloads/) > [MinGW-w64 - for 32 and 64 bit Windows Files](https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/) > [x86_64-win32-seh](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z)
