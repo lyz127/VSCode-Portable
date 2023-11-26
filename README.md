@@ -58,7 +58,8 @@ setings.json
     "javascript": "\"\\Soft\\nodejs\\node.exe\"",
     "python": "set PYTHONIOENCODING=utf8 && \"\\Soft\\Python311\\python.exe\"",
     "c": "cd $dir && \"\\Soft\\mingw64\\bin\\gcc.exe\" $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "cpp": "cd $dir && \"\\Soft\\mingw64\\bin\\g++.exe\" -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    "cpp": "cd $dir && \"\\Soft\\mingw64\\bin\\g++.exe\" -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "latex": "cd $dir && \"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\" $fileName"
   },
   "latex-workshop.latex.tools": [
     {
@@ -416,5 +417,28 @@ launch.json
       "runtimeExecutable": "\\Soft\\nodejs\\node.exe"
     }
   ]
+}
+```
+### Latex
+tasks.json
+```json
+{
+  "tasks": [
+    {
+      "label": "xelatex: 生成pdf",
+      "type": "shell",
+      "command": "\"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\"",
+      "args": ["${file}"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "用XeLaTeX生成pdf文件"
+    }
+  ],
+  "version": "2.0.0"
 }
 ```
