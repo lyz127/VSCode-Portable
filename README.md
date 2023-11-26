@@ -1,5 +1,5 @@
 # VS Code Portable
-将VSCode程序便携式安装在U盘上，并配置代码编译器路径。
+将VSCode程序便携式安装在U盘上，并配置代码编译器路径（C/C++、Python、JavaScript、Latex）。
 ## 文件目录
 - (root)
    - Soft
