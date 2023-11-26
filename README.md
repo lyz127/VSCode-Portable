@@ -1,5 +1,5 @@
 # VS Code Portable
-安装在U盘上的便携式VSCode程序及环境配置
+将VSCode程序便携式安装在U盘上，并配置代码编译器路径。
 ## 文件目录
 - (root)
    - Soft
@@ -17,6 +17,7 @@
       - Web
       - Latex
 ## Soft
+安装VSCode及代码编译器。
 ### VSCode
 [下载VSCode](https://code.visualstudio.com/#alt-downloads)`.zip`版并[便携式安装](https://code.visualstudio.com/docs/editor/portable)
 
@@ -157,6 +158,7 @@ setings.json
  - [texlive官网](https://tug.org/texlive/)
  - [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
 ## Code
+配置各工作区的启动及调试任务。
 ### C
 tasks.json
 ```json
