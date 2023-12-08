@@ -166,12 +166,35 @@ tasks.json
   "tasks": [
     {
       "type": "cppbuild",
-      "label": "C/C++: gcc.exe 生成活动文件",
+      "label": "C/C++: gcc.exe 生成活动文件（单文件）",
       "command": "/Soft/mingw64/bin/gcc.exe",
       "args": [
         "-fdiagnostics-color=always",
         "-g",
+        "-std=c11",
         "${file}",
+        "-o",
+        "${fileDirname}\\${fileBasenameNoExtension}.exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "调试器生成的任务(C)。"
+    },
+    {
+      "type": "cppbuild",
+      "label": "C/C++: gcc.exe 生成活动文件（多文件）",
+      "command": "/Soft/mingw64/bin/gcc.exe",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "-std=c11",
+        "*.c",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
@@ -256,6 +279,7 @@ tasks.json
       "args": [
         "-fdiagnostics-color=always",
         "-g",
+        "-std=c++11",
         "${file}",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
