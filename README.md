@@ -55,6 +55,7 @@ setings.json
     "editor.defaultFormatter": "James-Yu.latex-workshop"
   },
   "C_Cpp.default.compilerPath": "/Soft/mingw64/bin/gcc.exe",
+  "code-runner.runInTerminal": true,
   "code-runner.executorMap": {
     "javascript": "\"\\Soft\\nodejs\\node.exe\"",
     "python": "set PYTHONIOENCODING=utf8 && \"\\Soft\\Python311\\python.exe\"",
@@ -62,7 +63,6 @@ setings.json
     "cpp": "cd $dir && \"\\Soft\\mingw64\\bin\\g++.exe\" -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "latex": "cd $dir && \"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\" $fileName"
   },
-  "code-runner.runInTerminal": true,
   "latex-workshop.latex.tools": [
     {
       "name": "pdflatex",
