@@ -62,6 +62,7 @@ setings.json
     "cpp": "cd $dir && \"\\Soft\\mingw64\\bin\\g++.exe\" -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "latex": "cd $dir && \"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\" $fileName"
   },
+  "code-runner.runInTerminal": true,
   "latex-workshop.latex.tools": [
     {
       "name": "pdflatex",
