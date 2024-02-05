@@ -80,7 +80,10 @@ setings.json
     {
       "name": "biber",
       "command": "biber",
-      "args": ["%DOCFILE%"]
+      "args": ["%DOCFILE%"],
+      "env": {
+        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
+      }
     },
     {
       "name": "XeLaTeXmk",
