@@ -72,14 +72,15 @@ setings.json
         "-interaction=nonstopmode",
         "-file-line-error",
         "%DOCFILE%"
-      ]
+      ],
+      "env": {
+        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
+      }
     },
     {
       "name": "biber",
       "command": "biber",
-      "args": [
-        "%DOCFILE%"
-      ]
+      "args": ["%DOCFILE%"]
     },
     {
       "name": "XeLaTeXmk",
@@ -91,30 +92,24 @@ setings.json
         "-interaction=nonstopmode",
         "-file-line-error",
         "%DOC%"
-      ]
+      ],
+      "env": {
+        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
+      }
     }
   ],
   "latex-workshop.latex.recipes": [
     {
       "name": "xelatex",
-      "tools": [
-        "xelatex"
-      ]
+      "tools": ["xelatex"]
     },
     {
       "name": "latexmk-xe",
-      "tools": [
-        "XeLaTeXmk"
-      ]
+      "tools": ["XeLaTeXmk"]
     },
     {
       "name": "xelatex->biber->xelatex*2",
-      "tools": [
-        "xelatex",
-        "biber",
-        "xelatex",
-        "xelatex"
-      ]
+      "tools": ["xelatex", "biber", "xelatex", "xelatex"]
     }
   ],
   "latex-workshop.latex.clean.fileTypes": [
