@@ -1,469 +1,166 @@
 # VS Code Portable
-将VSCode程序便携式安装在U盘上，并配置代码编译器路径（C/C++、Python、JavaScript、Latex）。
-## 文件目录
-- (root)
-   - Soft
-      - VSCode-win32-x64-1.84.2
-         - data
-      - mingw64
-      - Python311
-      - nodejs
-      - texlive
-         - 2023
-   - Code
-      - C
-      - C++
-      - Python
-      - Web
-      - Latex
+将VSCode程序便携式安装在U盘上，并配置代码编译器路径（C/C++、Python、Java、TypesScript、Latex）。
+
 ## Soft
-安装VSCode及代码编译器。
+
 ### VSCode
 [下载VSCode](https://code.visualstudio.com/#alt-downloads)`.zip`版并[便携式安装](https://code.visualstudio.com/docs/editor/portable)
 
 安装插件：
  - Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code
  - Prettier - Code formatter
- - Code Runner
  - C/C++ Extension Pack
  - Python
+ - Jupyter
  - autopep8
- - JavaScript (ES6) code snippets
+ - Extension Pack for Java
  - Live Server
  - LaTeX Workshop
+ - Project Manager
+ - SynthWave '84
+ - background
+ - Code Runner
 
-setings.json
+*settings.json*
 ```json
 {
-  "python.defaultInterpreterPath": "\\Soft\\Python311",
-  "cmake.options.statusBarVisibility": "icon",
-  "cmake.configureOnOpen": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[c]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.autopep8"
-  },
-  "[latex]": {
-    "editor.defaultFormatter": "James-Yu.latex-workshop"
-  },
-  "C_Cpp.default.compilerPath": "/Soft/mingw64/bin/gcc.exe",
-  "code-runner.runInTerminal": true,
-  "code-runner.executorMap": {
-    "javascript": "\"\\Soft\\nodejs\\node.exe\"",
-    "python": "set PYTHONIOENCODING=utf8 && \"\\Soft\\Python311\\python.exe\"",
-    "c": "cd $dir && \"\\Soft\\mingw64\\bin\\gcc.exe\" -std=c11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "cpp": "cd $dir && \"\\Soft\\mingw64\\bin\\g++.exe\" -std=c++11 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    "latex": "cd $dir && \"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\" $fileName"
-  },
-  "latex-workshop.latex.tools": [
-    {
-      "name": "xelatex",
-      "command": "xelatex",
-      "args": [
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOCFILE%"
-      ],
-      "env": {
-        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
-      }
+    "redhat.telemetry.enabled": true,
+    "python.defaultInterpreterPath": "${execPath}/../../miniconda3",
+    "java.jdt.ls.java.home": "${execPath}/../../jdk-21",
+    "C_Cpp.default.compilerPath": "${execPath}/../../mingw64/bin/g++.exe",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "${execPath}/../../mingw64/x86_64-w64-mingw32/include/**"
+    ],
+    "git.path": "${execPath}/../../Git-x64/bin/git.exe",
+    "terminal.integrated.env.windows": {
+        "Path": "${execPath}/../../jdk-21/bin;${execPath}/../../Git-x64/bin;${execPath}/../../Git-x64/usr/bin;${execPath}/../../mingw64/bin;${execPath}/../../miniconda3;${execPath}/../../miniconda3/Scripts;${execPath}/../../texlive/2023/bin/windows;${execPath}/../../Gnu-x32/bin;${execPath}/../../nodejs;${execPath}/../../nodejs/node_global;${execPath}/../../nodejs/node_global/node_modules;${execPath}/../../dotnet;${execPath}/../../ffmpeg/bin",
+        "JAVA_HOME": "${execPath}/../../jdk-21",
+        "NODE_PATH": "${execPath}/../../nodejs/node_global/node_modules",
+        "HomePath": "${execPath}/../../home",
+        "Home": "${execPath}/../../home"
     },
-    {
-      "name": "biber",
-      "command": "biber",
-      "args": ["%DOCFILE%"],
-      "env": {
-        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
-      }
+    "workbench.colorTheme": "SynthWave '84",
+    "synthwave84.brightness": 0.5,
+    "background.fullscreen": {
+        "images": [
+            "https://pic4.zhimg.com/v2-445c04e697de450ff21b7e50a005b0bf_r.jpg"
+        ],
+        "opacity": 0.8,
+        "size": "cover",
+        "position": "center",
+        "interval": 0
     },
-    {
-      "name": "XeLaTeXmk",
-      "command": "latexmk",
-      "args": [
-        "-xelatex",
-        "-synctex=1",
-        "-shell-escape",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
-      ],
-      "env": {
-        "PATH": "\\Soft\\texlive\\2023\\bin\\windows"
-      }
-    }
-  ],
-  "latex-workshop.latex.recipes": [
-    {
-      "name": "xelatex",
-      "tools": ["xelatex"]
-    },
-    {
-      "name": "latexmk-xe",
-      "tools": ["XeLaTeXmk"]
-    },
-    {
-      "name": "xelatex->biber->xelatex*2",
-      "tools": ["xelatex", "biber", "xelatex", "xelatex"]
-    }
-  ],
-  "latex-workshop.latex.clean.fileTypes": [
-    "*.aux",
-    "*.bbl",
-    "*.blg",
-    "*.idx",
-    "*.ind",
-    "*.lof",
-    "*.lot",
-    "*.out",
-    "*.toc",
-    "*.acn",
-    "*.acr",
-    "*.alg",
-    "*.glg",
-    "*.glo",
-    "*.gls",
-    "*.ist",
-    "*.fls",
-    "*.log",
-    "*.fdb_latexmk"
-  ],
-  "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.latex.autoBuild.run": "never",
-  "latex-workshop.showContextMenu": true,
-  "latex-workshop.message.error.show": true,
-  "latex-workshop.message.warning.show": true,
-  "latex-workshop.intellisense.package.enabled": true,
-  "latex-workshop.latex.autoClean.run": "never",
-  "latex-workshop.latex.recipe.default": "lastUsed",
-  "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
+    "latex-workshop.latex.tools": [
+        {
+            "name": "XeLaTeXmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-shell-escape",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {
+                "PATH": "${execPath}/../../texlive/2023/bin/windows"
+            }
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk-xe",
+            "tools": [
+                "XeLaTeXmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.showContextMenu": true,
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.message.warning.show": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.autoClean.run": "never",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "update.enableWindowsBackgroundUpdates": false,
+    "extensions.autoCheckUpdates": false
 }
 ```
+*projects.json*
+```json
+[
+	{
+		"name": "code",
+		"rootPath": "${execPath}\\..\\..\\home\\work.code-workspace",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	},
+	{
+		"name": "project",
+		"rootPath": "${execPath}\\..\\..\\code\\project",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]
+```
 ### MinGW
-[MinGW-w64](https://www.mingw-w64.org/downloads/) > [MinGW-w64 - for 32 and 64 bit Windows Files](https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/) > [x86_64-win32-seh](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z)
+ - [MinGW-w64 (官网)](https://www.mingw-w64.org) 
+ - [MinGW-W64-builds (GitHub)](https://github.com/niXman/mingw-builds-binaries/releases)
 ### Python
-[Python官网](https://www.python.org/) > [Download](https://www.python.org/downloads/)
+ - [Python官网](https://www.python.org/)
+ - [anaconda (清华大学开源软件镜像站)](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)
+### Java
+ - [Oracle](https://www.oracle.com/cn/java/technologies/downloads/)
 ### NodeJs
-[node.js官网](https://nodejs.org/en) > Recommended For Most Users
+ - [node.js官网](https://nodejs.org/zh-cn)
+ - [*nvm](https://github.com/coreybutler/nvm-windows/releases)
 ### TexLive
  - [texlive官网](https://tug.org/texlive/)
  - [清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)
-## Code
-配置各工作区的启动及调试任务。
-### C
-tasks.json
-```json
-{
-  "tasks": [
-    {
-      "type": "cppbuild",
-      "label": "C/C++: gcc.exe 生成活动文件（单文件）",
-      "command": "/Soft/mingw64/bin/gcc.exe",
-      "args": [
-        "-fdiagnostics-color=always",
-        "-g",
-        "-std=c11",
-        "${file}",
-        "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": ["$gcc"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "调试器生成的任务(C)。"
-    },
-    {
-      "type": "cppbuild",
-      "label": "C/C++: gcc.exe 生成活动文件（多文件）",
-      "command": "/Soft/mingw64/bin/gcc.exe",
-      "args": [
-        "-fdiagnostics-color=always",
-        "-g",
-        "-std=c11",
-        "*.c",
-        "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": ["$gcc"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "调试器生成的任务(C)。"
-    }
-  ],
-  "version": "2.0.0"
-}
-```
+### Git
+ - [Git官网](https://git-scm.com/)
+ - [git (2.35.1)](https://github.com/git-for-windows/git/releases/tag/v2.35.1.windows.2)
+### Make
+ - [GNU Make](https://www.gnu.org/software/make/)
+### Ffmpeg
+ - [ffmpeg官网](https://ffmpeg.org/)
 
-launch.json
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "(gdb) Windows 上的 Bash 启动",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "pipeTransport": {
-        "debuggerPath": "/Soft/mingw64/bin/gdb.exe",
-        "pipeProgram": "${env:windir}\\system32\\bash.exe",
-        "pipeArgs": ["-c"],
-        "pipeCwd": ""
-      },
-      "setupCommands": [
-        {
-          "description": "为 gdb 启用整齐打印",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "将反汇编风格设置为 Intel",
-          "text": "-gdb-set disassembly-flavor intel",
-          "ignoreFailures": true
-        }
-      ]
-    }
-  ]
-}
-```
-
-c_cpp_properties.json
-```json
-{
-  "configurations": [
-    {
-      "name": "Win32",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "/Soft/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/**"
-      ],
-      "defines": ["_DEBUG", "UNICODE", "_UNICODE"]
-    }
-  ],
-  "version": 4
-}
-```
-### C++
-tasks.json
-```json
-{
-  "tasks": [
-    {
-      "type": "cppbuild",
-      "label": "C/C++: g++.exe 生成活动文件",
-      "command": "/Soft/mingw64/bin/g++.exe",
-      "args": [
-        "-fdiagnostics-color=always",
-        "-g",
-        "-std=c++11",
-        "${file}",
-        "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe"
-      ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "problemMatcher": ["$gcc"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "调试器生成的任务(C++)。"
-    }
-  ],
-  "version": "2.0.0"
-}
-```
-
-launch.json
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "(gdb) Windows 上的 Bash 启动",
-      "type": "cppdbg",
-      "request": "launch",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": false,
-      "cwd": "${fileDirname}",
-      "environment": [],
-      "externalConsole": false,
-      "pipeTransport": {
-        "debuggerPath": "/Soft/mingw64/bin/gdb.exe",
-        "pipeProgram": "${env:windir}\\system32\\bash.exe",
-        "pipeArgs": ["-c"],
-        "pipeCwd": ""
-      },
-      "setupCommands": [
-        {
-          "description": "为 gdb 启用整齐打印",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        },
-        {
-          "description": "将反汇编风格设置为 Intel",
-          "text": "-gdb-set disassembly-flavor intel",
-          "ignoreFailures": true
-        }
-      ]
-    }
-  ]
-}
-```
-
-c_cpp_properties.json
-```json
-{
-  "configurations": [
-    {
-      "name": "Win32",
-      "includePath": ["${workspaceFolder}/**"],
-      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
-      "compilerPath": "/Soft/mingw64/bin/gcc.exe"
-    }
-  ],
-  "version": 4
-}
-```
-### Python
-tasks.json
-```json
-{
-  "tasks": [
-    {
-      "label": "python: 运行程序",
-      "type": "shell",
-      "command": "\"\\Soft\\Python311\\python.exe\"",
-      "args": ["${file}"],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "运行Python程序。"
-    },
-    {
-      "label": "python: 生成exe程序",
-      "type": "shell",
-      "command": "\"\\Soft\\Python311\\Scripts\\pyinstaller.exe\"",
-      "args": ["-F", "${file}"],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "Python脚本打包成exe程序。"
-    }
-  ],
-  "version": "2.0.0"
-}
-```
-
-launch.json
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "(Python) 启动",
-      "type": "python",
-      "request": "launch",
-      "program": "${file}",
-      "console": "integratedTerminal",
-      "justMyCode": true
-    }
-  ]
-}
-```
-### Web
-tasks.json
-```json
-{
-  "tasks": [
-    {
-      "label": "node: 运行程序",
-      "type": "shell",
-      "command": "\"\\Soft\\nodejs\\node.exe\"",
-      "args": ["${file}"],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "运行JavaScript或TypeScript。"
-    }
-  ],
-  "version": "2.0.0"
-}
-```
-
-launch.json
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "(node) 启动",
-      "skipFiles": ["<node_internals>/**"],
-      "program": "${file}",
-      "runtimeExecutable": "\\Soft\\nodejs\\node.exe"
-    }
-  ]
-}
-```
-### Latex
-tasks.json
-```json
-{
-  "tasks": [
-    {
-      "label": "xelatex: 生成pdf文件",
-      "type": "shell",
-      "command": "\"\\Soft\\texlive\\2023\\bin\\windows\\xelatex.exe\"",
-      "args": ["${file}"],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "detail": "用XeLaTeX生成pdf文件"
-    }
-  ],
-  "version": "2.0.0"
-}
-```
+## Path
+ - (root)
+   - home
+   - code
+   - VSCode-x64
+   - mingw64
+   - miniconda3
+   - jdk-21
+   - nodejs
+   - texlive
+   - Git-x64
+   - Gnu-x32
+   - ffmpeg

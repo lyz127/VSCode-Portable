@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "${execPath}/../../code/cpp"
+		},
+		{
+			"path": "${execPath}/../../code/python"
+		},
+		{
+			"path": "${execPath}/../../code/typescript"
+		},
+		{
+			"path": "${execPath}/../../code/latex"
+		},
+		{
+			"path": "${execPath}/../../code/java"
+		}
+	],
+	"settings": {}
+}
