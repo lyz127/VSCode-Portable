@@ -24,22 +24,21 @@
 *settings.json*
 ```json
 {
-    "path":"${execPath}/../..",
     "redhat.telemetry.enabled": true,
-    "python.defaultInterpreterPath": "${config:path}/miniconda3",
-    "java.jdt.ls.java.home": "${config:path}/jdk-21",
-    "C_Cpp.default.compilerPath": "${config:path}/mingw64/bin/g++.exe",
+    "python.defaultInterpreterPath": "${execPath}/../../miniconda3",
+    "java.jdt.ls.java.home": "${execPath}/../../jdk-21",
+    "C_Cpp.default.compilerPath": "${execPath}/../../mingw64/bin/g++.exe",
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/**",
-        "${config:path}/mingw64/x86_64-w64-mingw32/include/**"
+        "${execPath}/../../mingw64/x86_64-w64-mingw32/include/**"
     ],
-    "git.path": "${config:path}/Git-x64/bin/git.exe",
+    "git.path": "${execPath}/../../Git-x64/bin/git.exe",
     "terminal.integrated.env.windows": {
-        "Path": "${config:path}/jdk-21/bin;${config:path}/Git-x64/bin;${config:path}/Git-x64/usr/bin;${config:path}/mingw64/bin;${config:path}/miniconda3;${config:path}/miniconda3/Scripts;${config:path}/texlive/2023/bin/windows;${config:path}/Gnu-x32/bin;${config:path}/cmake/bin;${config:path}/nodejs;${config:path}/nodejs/node_global;${config:path}/nodejs/node_global/node_modules;${config:path}/dotnet;${config:path}/ffmpeg/bin",
-        "JAVA_HOME": "${config:path}/jdk-21",
-        "NODE_PATH": "${config:path}/nodejs/node_global/node_modules",
-        "HomePath": "${config:path}/home",
-        "Home": "${config:path}/home"
+        "Path": "${execPath}/../../jdk-21/bin;${execPath}/../../Git-x64/bin;${execPath}/../../Git-x64/usr/bin;${execPath}/../../mingw64/bin;${execPath}/../../miniconda3;${execPath}/../../miniconda3/Scripts;${execPath}/../../texlive/2023/bin/windows;${execPath}/../../Gnu-x32/bin;${execPath}/../../cmake/bin;${execPath}/../../nodejs;${execPath}/../../nodejs/node_global;${execPath}/../../nodejs/node_global/node_modules;${execPath}/../../dotnet;${execPath}/../../ffmpeg/bin",
+        "JAVA_HOME": "${execPath}/../../jdk-21",
+        "NODE_PATH": "${execPath}/../../nodejs/node_global/node_modules",
+        "HomePath": "${execPath}/../../home",
+        "Home": "${execPath}/../../home"
     },
     "workbench.colorTheme": "SynthWave '84",
     "synthwave84.brightness": 0.5,
@@ -65,7 +64,7 @@
                 "%DOC%"
             ],
             "env": {
-                "PATH": "${config:path}/texlive/2023/bin/windows"
+                "PATH": "/texlive/2023/bin/windows"
             }
         }
     ],
@@ -118,14 +117,63 @@
 		"name": "code",
 		"rootPath": "${execPath}\\..\\..\\home\\work.code-workspace",
 		"paths": [],
-		"tags": [],
+		"tags": [
+			"all"
+		],
 		"enabled": true
 	},
 	{
 		"name": "project",
 		"rootPath": "${execPath}\\..\\..\\code\\project",
 		"paths": [],
-		"tags": [],
+		"tags": [
+			"all"
+		],
+		"enabled": true
+	},
+	{
+		"name": "cpp",
+		"rootPath": "${execPath}\\..\\..\\code\\cpp",
+		"paths": [],
+		"tags": [
+			"code"
+		],
+		"enabled": true
+	},
+	{
+		"name": "python",
+		"rootPath": "${execPath}\\..\\..\\code\\python",
+		"paths": [],
+		"tags": [
+			"code"
+		],
+		"enabled": true
+	},
+	{
+		"name": "typescript",
+		"rootPath": "${execPath}\\..\\..\\code\\typescript",
+		"paths": [],
+		"tags": [
+			"code"
+		],
+		"enabled": true
+	},
+	{
+		"name": "latex",
+		"rootPath": "${execPath}\\..\\..\\code\\latex",
+		"paths": [],
+		"tags": [
+			"code"
+		],
+		"enabled": true
+	},
+	{
+		"name": "java",
+		"rootPath": "${execPath}\\..\\..\\code\\java",
+		"paths": [],
+		"tags": [
+			"code"
+		],
 		"enabled": true
 	}
 ]
